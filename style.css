@@ -55,3 +55,19 @@ li {
   margin-bottom: 8px;
   background: #fafafa;
 }
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: #e0e7ff;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #1e3a8a;
+}
