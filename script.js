@@ -1,5 +1,6 @@
 const form = document.getElementById("form-estudo");
 const lista = document.getElementById("lista-estudos");
+const estatisticasDiv = document.getElementById("estatisticas");
 
 let estudos = JSON.parse(localStorage.getItem("estudos")) || [];
 
@@ -19,6 +20,23 @@ function renderizarEstudos() {
     `;
     lista.appendChild(li);
   });
+
+  atualizarEstatisticas();
+}
+
+function atualizarEstatisticas() {
+  const totalSessoes = estudos.length;
+  const totalMinutos = estudos.reduce((sum, e) => sum + Number(e.duracao || 0), 0);
+  const totalHoras = (totalMinutos / 60).toFixed(1);
+  const totalQuestoes = estudos.reduce((sum, e) => sum + Number(e.questoes || 0), 0);
+  const mediaDuracao = totalSessoes > 0 ? (totalMinutos / totalSessoes).toFixed(1) : 0;
+
+  estatisticasDiv.innerHTML = `
+    <div class="stat-card">⏱ ${totalHoras} h totais</div>
+    <div class="stat-card">📚 ${totalSessoes} sessões</div>
+    <div class="stat-card">❓ ${totalQuestoes} questões</div>
+    <div class="stat-card">🔝 ${mediaDuracao} min/sessão</div>
+  `;
 }
 
 form.addEventListener("submit", e => {
@@ -47,5 +65,5 @@ function excluirEstudo(index) {
   renderizarEstudos();
 }
 
-// Inicializa a lista
+// Inicializa a lista + estatísticas
 renderizarEstudos();
