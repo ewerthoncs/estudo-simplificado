@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Estudos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>📘 Registro de Estudos</h1>
+
+    <form id="form-estudo">
+      <input type="date" id="data" required>
+      <input type="time" id="hora_inicio" required>
+      <input type="number" id="duracao" placeholder="Duração (min)" required>
+      <input type="text" id="materia" placeholder="Matéria" required>
+      <input type="text" id="assunto" placeholder="Assunto">
+      <input type="text" id="metodo" placeholder="Método de estudo">
+      <input type="number" id="questoes" placeholder="Questões resolvidas">
+      <textarea id="observacoes" placeholder="Observações"></textarea>
+      <button type="submit">Salvar</button>
+    </form>
+
+    <h2>📊 Histórico</h2>
+    <ul id="lista-estudos"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
